@@ -8,3 +8,7 @@
 #define DYNAMIC_KEYMAP_LAYER_COUNT 10
 
 
+#define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_TERM 175
+// #define TAPPING_TERM_PER_KEY         # already enabled by VIAL
+// #define TAPPING_FORCE_HOLD_PER_KEY   # already enabled by VIAL

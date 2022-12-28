@@ -74,3 +74,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 }
+
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case LSFT_T(KC_SPC):
+      return true;
+    default:
+      return false;
+  }
+}
+
+uint16_t qs_get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case C_GESC:   // for slow pinky
+    case LT(3, KC_TAB):
+      return TAPPING_TERM + 25;
+    default:
+      return TAPPING_TERM;
+  }
+}
+
