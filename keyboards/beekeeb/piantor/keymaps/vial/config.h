@@ -10,5 +10,5 @@
 
 #define IGNORE_MOD_TAP_INTERRUPT
 #define TAPPING_TERM 175
-// #define TAPPING_TERM_PER_KEY         # already enabled by VIAL
-// #define TAPPING_FORCE_HOLD_PER_KEY   # already enabled by VIAL
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
