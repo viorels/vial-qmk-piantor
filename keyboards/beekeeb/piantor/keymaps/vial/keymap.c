@@ -128,6 +128,8 @@ uint16_t get_tapping_term_user(uint16_t keycode, keyrecord_t *record, uint16_t _
     case C_GESC:   // for slow pinky
     case LT(3, KC_TAB):
       return _default + 25;
+    case LT(3, KC_BSPC):
+      return _default - 75;
     default:
       return _default;
   }
