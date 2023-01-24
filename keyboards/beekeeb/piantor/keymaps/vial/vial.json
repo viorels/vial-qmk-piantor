@@ -7,6 +7,18 @@
         {"name": "CGESC",
          "title": "Ctrl / Grave / ESC",
          "shortName": "C_GESC"
+        },
+        {"name": "AlTAB",
+         "title": "Alt TAB",
+         "shortName": "ALT_TAB"
+        },
+        {"name": "GuTAB",
+         "title": "Super TAB",
+         "shortName": "SUPER_TAB"
+        },
+        {"name": "GuGRV",
+         "title": "Super Grave",
+         "shortName": "SUPER_GRV"
         }
     ],
     "matrix": {
