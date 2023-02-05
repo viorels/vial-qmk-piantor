@@ -125,11 +125,11 @@ bool get_tapping_force_hold_user(uint16_t keycode, keyrecord_t *record, bool _de
 
 uint16_t get_tapping_term_user(uint16_t keycode, keyrecord_t *record, uint16_t _default) {
   switch (keycode) {
-    case C_GESC:   // for slow pinky
-    case LT(3, KC_TAB):
-      return _default + 25;
+    // keys used in fast combos, works fine with default TAPPING_TERM of 150
+    case C_GESC:
+    case LCTL_T(KC_QUOTE):
     case LT(3, KC_BSPC):
-      return _default - 75;
+      return _default - 50;
     default:
       return _default;
   }
