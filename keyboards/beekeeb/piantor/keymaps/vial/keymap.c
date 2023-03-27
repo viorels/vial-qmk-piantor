@@ -135,3 +135,49 @@ uint16_t get_tapping_term_user(uint16_t keycode, keyrecord_t *record, uint16_t _
   }
 }
 
+bool encoder_update_user(uint8_t index, bool clockwise) {
+  if (layer_state_is(4)) {
+    // clockwise ? tap_code(KC_BRIU) : tap_code(KC_BRID);
+    clockwise ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
+  }
+  else if (layer_state_is(2)) {
+    clockwise ? tap_code(KC_RIGHT) : tap_code(KC_LEFT);
+
+    /* undo/redo
+    if (get_mods() & MOD_BIT(KC_LSHIFT)) {  // use shift-z for redo
+        if (clockwise) {
+            tap_code16(LCTL(KC_Z));         // shift is already pressed
+        } else {
+            // WITHOUT_MODS({
+            //     tap_code16(LCTL(KC_Z));
+            // });
+        }
+    }
+    else {                                  // use ctrl-y for redo
+      clockwise ? tap_code16(LCTL(KC_Y)) : tap_code16(LCTL(KC_Z));
+    }
+    */
+  }
+  else if (layer_state_is(3)) {
+      // nothing
+  }
+  else {  // default layer
+    // change desktop ctrl-alt-up/down (also move window with shift)
+    if ((get_mods() & MOD_BIT(KC_LCTL)) && (get_mods() & MOD_BIT(KC_LALT))) {
+      clockwise ? tap_code(KC_DOWN) : tap_code(KC_UP);
+    }
+    // alt-tab for windows, ctrl-tab for browser tabs (XOR/(!a != !b), only ONE of alt/ctrl pressed)
+    else if (get_mods() & (MOD_BIT(KC_LALT) | MOD_BIT(KC_LGUI))) {
+        clockwise ? tap_code(KC_TAB) : tap_code16(LSFT(KC_TAB));
+    }
+    else if (get_mods() & MOD_BIT(KC_LCTL)) {
+        // clockwise ? tap_code(KC_TAB) : tap_code16(LSFT(KC_TAB));
+        clockwise ? tap_code16(LCTL(KC_PGDN)) : tap_code16(LCTL(KC_PGUP));
+    }
+    else {
+        clockwise ? tap_code(KC_WH_D) : tap_code(KC_WH_U);
+    }
+  }
+
+  return false;
+}
