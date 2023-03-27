@@ -124,8 +124,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool get_tapping_force_hold_user(uint16_t keycode, keyrecord_t *record, bool _default) {
   switch (keycode) {
-    case LT(4, KC_SPC):
-    case LT(3, KC_BSPC):
+    case LT(_NUM, KC_SPC):
+    case LT(_SYM, KC_BSPC):
       return true;
     default:
       return _default;
@@ -137,7 +137,7 @@ uint16_t get_tapping_term_user(uint16_t keycode, keyrecord_t *record, uint16_t _
     // keys used in fast combos, works fine with default TAPPING_TERM of 150
     case C_GESC:
     case LCTL_T(KC_QUOTE):
-    case LT(3, KC_BSPC):
+    case LT(_SYM, KC_BSPC):
       return _default - 50;
     case KC_LSFT:
       return _default + 50; // easy to activate CAPS_WORD
