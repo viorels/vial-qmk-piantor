@@ -3,6 +3,15 @@
 
 #include QMK_KEYBOARD_H
 
+enum layer_names {
+  _QWERTY,
+  _COLEMAK,
+  _NAV,
+  _SYM,
+  _NUM,
+  _FN
+};
+
 enum custom_keycodes {
   C_GESC = USER00,
   ALT_TAB,
@@ -136,11 +145,11 @@ uint16_t get_tapping_term_user(uint16_t keycode, keyrecord_t *record, uint16_t _
 }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-  if (layer_state_is(4)) {
+  if (layer_state_is(_NUM)) {
     // clockwise ? tap_code(KC_BRIU) : tap_code(KC_BRID);
     clockwise ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
   }
-  else if (layer_state_is(2)) {
+  else if (layer_state_is(_NAV)) {
     clockwise ? tap_code(KC_RIGHT) : tap_code(KC_LEFT);
 
     /* undo/redo
@@ -158,7 +167,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
     */
   }
-  else if (layer_state_is(3)) {
+  else if (layer_state_is(_SYM)) {
       // nothing
   }
   else {  // default layer
