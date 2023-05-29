@@ -154,6 +154,10 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
   else if (layer_state_is(_NAV)) {
     clockwise ? tap_code(KC_RIGHT) : tap_code(KC_LEFT);
 
+    if ((get_mods() & MOD_BIT(KC_LCTL)) && (get_mods() & MOD_BIT(KC_LALT))) {
+      clockwise ? tap_code(KC_DOWN) : tap_code(KC_UP);
+    }
+
     /* undo/redo
     if (get_mods() & MOD_BIT(KC_LSHIFT)) {  // use shift-z for redo
         if (clockwise) {
@@ -186,7 +190,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         clockwise ? tap_code16(LCTL(KC_PGDN)) : tap_code16(LCTL(KC_PGUP));
     }
     else {
-        clockwise ? tap_code(KC_WH_D) : tap_code(KC_WH_U);
+        // clockwise ? tap_code(KC_WH_D) : tap_code(KC_WH_U);
+        clockwise ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
     }
   }
 
