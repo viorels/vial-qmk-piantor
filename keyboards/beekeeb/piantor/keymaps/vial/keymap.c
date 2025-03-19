@@ -190,8 +190,8 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         clockwise ? tap_code16(LCTL(KC_PGDN)) : tap_code16(LCTL(KC_PGUP));
     }
     else {
-        // clockwise ? tap_code(KC_WH_D) : tap_code(KC_WH_U);
-        clockwise ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
+        clockwise ? tap_code(KC_WH_D) : tap_code(KC_WH_U);
+        // clockwise ? tap_code(KC_VOLU) : tap_code(KC_VOLD);
     }
   }
 
